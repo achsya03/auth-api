@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,10 +20,10 @@ use Illuminate\Support\Facades\Route;
 // });
 
 //Register User
-Route::post('register', 'UserController@register');
+Route::post('register', [UserController::class,'register']);
 
 //Login User
-Route::post('login', 'UserController@login');
+Route::post('login', [UserController::class,'login']);
 
 //Check User
-Route::get('user', 'UserController@getAuthenticatedUser')->middleware('jwt.verify');
+Route::get('user', [UserController::class,'getAuthenticatedUser'])->middleware('jwt.verify');
